@@ -1,0 +1,36 @@
+[tool.pytest.ini_options]
+addopts = "--tb=short --video retain-on-failure --tracing retain-on-failure --screenshot only-on-failure"
+testpaths = [
+    "tests",
+]
+pythonpath = ["."]
+
+
+[tool.pyright]
+extraPaths = [
+    "src",
+]
+include = [
+    "src",
+    "tests",
+]
+
+exclude = []
+reportMissingImports = false
+reportMissingTypeStubs = false
+reportOptionalMemberAccess = false
+typeCheckingMode = "basic"
+
+
+[tool.ruff]
+target-version = "py312"
+line-length = 120
+
+[tool.ruff.lint]
+select = ["B", "E", "F", "I", "UP", "SIM"]
+
+[tool.ruff.lint.isort]
+force-single-line = true
+
+[tool.ruff.lint.mccabe]
+max-complexity = 10

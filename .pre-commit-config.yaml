@@ -1,0 +1,41 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v4.5.0
+    hooks:
+#      - id: no-commit-to-branch
+      - id: check-shebang-scripts-are-executable
+      - id: check-symlinks
+      - id: detect-private-key
+      - id: end-of-file-fixer
+      - id: trailing-whitespace
+      - id: check-json
+      - id: check-toml
+
+  - repo: local
+    hooks:
+
+      - id: format
+        name: format Python code
+        description: Pre-format python code.
+        entry: ruff format --quiet
+        language: system
+        types:
+          - python
+
+      - id: lint-python
+        name: lint Python
+        description: Lint python code.
+        entry: ruff check
+        args:
+          - --fix
+        language: system
+        types:
+          - python
+
+#      - id: type-check
+#        name: type check Python annotations
+#        description: Pyright type annotation checking.
+#        entry: pyright
+#        language: system
+#        types:
+#          - python
